@@ -49,5 +49,5 @@ pip install bs4
 3. Run it
 
 ```bash
-python app.py
+python main.py
 ```
