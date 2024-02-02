@@ -11,7 +11,7 @@ def extract(page):
 def transform(html_repos):
     join_in = []
     for num in html_repos:
-        repository_name = ''.join(num.select_one('h1.h3.lh-condensed').text.split())
+        repository_name = ''.join(num.select_one('h2.h3.lh-condensed').text.split())
         number_stars = ' '.join(num.select_one('span.d-inline-block.float-sm-right').text.split())
         developer_name = num.select_one('img.avatar.mb-1.avatar-user')['alt']
         join_in.append({'developer': developer_name, 'repository_name': repository_name, 'nbr_stars': number_stars})
@@ -30,3 +30,6 @@ def _code():
     html_repos = extract(page)
     repositories_data = transform(html_repos)
     print(format(repositories_data))
+
+if __name__ == "__main__":
+    _code()
